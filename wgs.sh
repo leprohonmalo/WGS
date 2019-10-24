@@ -31,4 +31,4 @@ prodigal -i results/assemblage/final.contigs.fa -d results/genes/predicted_genes
 
 sed "s:>:*\n>:g" results/genes/predicted_genes.fasta | sed -n "/partial=00/,/*/p"|grep -v "*" > results/genes/genes_full.fna
 
-blastn -query results/genes/genes_full.fna -db databases/resfinder.fna -perc_identity 80 -qcov_hsp_perc 80 -evalue 0.001 -out results/blast/EchG_blastn.txt
+blastn -query results/genes/genes_full.fna -db databases/resfinder.fna -perc_identity 80 -qcov_hsp_perc 80 -evalue 0.001 -out results/blast/EchG_blastn.txt -outfmt '6 qseqid sseqid pident qcovs evalue' -best_hit_score_edge 0.001
